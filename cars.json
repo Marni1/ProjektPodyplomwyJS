@@ -1,0 +1,278 @@
+[
+  {
+    "name": "BMW X5",
+    "brand": "BMW",
+    "price": 200000,
+    "production": 2022,
+    "accessories": [
+      { "name": "Nawigacja GPS", "price": 5000 },
+      { "name": "Podgrzewane fotele", "price": 3000 }
+    ],
+    "photo": "https://example.com/bmw_x5.jpg"
+  },
+  {
+    "name": "BMW 3 Series",
+    "brand": "BMW",
+    "price": 150000,
+    "production": 2023,
+    "accessories": [
+      { "name": "System audio Harman Kardon", "price": 4000 },
+      { "name": "Skórzane fotele", "price": 2500 }
+    ],
+    "photo": "https://example.com/bmw_3_series.jpg"
+  },
+  {
+    "name": "BMW 5 Series",
+    "brand": "BMW",
+    "price": 180000,
+    "production": 2022,
+    "accessories": [
+      { "name": "System multimedialny iDrive", "price": 6000 },
+      { "name": "Oświetlenie Ambient", "price": 3500 }
+    ],
+    "photo": "https://example.com/bmw_5_series.jpg"
+  },
+  {
+    "name": "BMW M4",
+    "brand": "BMW",
+    "price": 250000,
+    "production": 2023,
+    "accessories": [
+      { "name": "System wydechowy M Performance", "price": 8000 },
+      { "name": "Zestaw hamulców ceramicznych", "price": 10000 }
+    ],
+    "photo": "https://example.com/bmw_m4.jpg"
+  },
+  {
+    "name": "BMW i3",
+    "brand": "BMW",
+    "price": 120000,
+    "production": 2021,
+    "accessories": [
+      { "name": "System nawigacji BMW Professional", "price": 3000 },
+      { "name": "Ogrzewane siedzenia", "price": 2000 }
+    ],
+    "photo": "https://example.com/bmw_i3.jpg"
+  },
+  {
+    "name": "Toyota RAV4",
+    "brand": "Toyota",
+    "price": 220000,
+    "production": 2023,
+    "accessories": [
+      { "name": "System bezpieczeństwa Toyota Safety Sense", "price": 3500 },
+      { "name": "Panoramiczny dach szklany", "price": 4000 }
+    ],
+    "photo": "https://example.com/toyota_rav4.jpg"
+  },
+  {
+    "name": "Toyota Corolla",
+    "brand": "Toyota",
+    "price": 180000,
+    "production": 2022,
+    "accessories": [
+      { "name": "System audio JBL", "price": 3000 },
+      { "name": "Klimatyzacja dwustrefowa", "price": 2000 }
+    ],
+    "photo": "https://example.com/toyota_corolla.jpg"
+  },
+  {
+    "name": "Toyota Camry",
+    "brand": "Toyota",
+    "price": 200000,
+    "production": 2023,
+    "accessories": [
+      { "name": "Nawigacja GPS", "price": 3500 },
+      { "name": "Ogrzewane fotele przednie", "price": 2500 }
+    ],
+    "photo": "https://example.com/toyota_camry.jpg"
+  },
+  {
+    "name": "Toyota Highlander",
+    "brand": "Toyota",
+    "price": 250000,
+    "production": 2022,
+    "accessories": [
+      { "name": "System multimedialny z ekranem dotykowym", "price": 4000 },
+      { "name": "System kamer 360 stopni", "price": 3500 }
+    ],
+    "photo": "https://example.com/toyota_highlander.jpg"
+  },
+  {
+    "name": "Toyota Yaris",
+    "brand": "Toyota",
+    "price": 150000,
+    "production": 2021,
+    "accessories": [
+      { "name": "System bezpieczeństwa Toyota Safety Sense", "price": 2500 },
+      { "name": "Automatyczna klimatyzacja", "price": 2000 }
+    ],
+    "photo": "https://example.com/toyota_yaris.jpg"
+  },
+  {
+    "name": "BMW X5",
+    "brand": "BMW",
+    "price": 200000,
+    "production": 2022,
+    "accessories": [
+      { "name": "Nawigacja GPS", "price": 5000 },
+      { "name": "Podgrzewane fotele", "price": 3000 }
+    ],
+    "photo": "https://example.com/bmw_x5.jpg"
+  },
+  {
+    "name": "BMW 3 Series",
+    "brand": "BMW",
+    "price": 150000,
+    "production": 2023,
+    "accessories": [
+      { "name": "System audio Harman Kardon", "price": 4000 },
+      { "name": "Skórzane fotele", "price": 2500 }
+    ],
+    "photo": "https://example.com/bmw_3_series.jpg"
+  },
+  {
+    "name": "BMW 5 Series",
+    "brand": "BMW",
+    "price": 180000,
+    "production": 2022,
+    "accessories": [
+      { "name": "System multimedialny iDrive", "price": 6000 },
+      { "name": "Oświetlenie Ambient", "price": 3500 }
+    ],
+    "photo": "https://example.com/bmw_5_series.jpg"
+  },
+  {
+    "name": "BMW M4",
+    "brand": "BMW",
+    "price": 250000,
+    "production": 2023,
+    "accessories": [
+      { "name": "System wydechowy M Performance", "price": 8000 },
+      { "name": "Zestaw hamulców ceramicznych", "price": 10000 }
+    ],
+    "photo": "https://example.com/bmw_m4.jpg"
+  },
+  {
+    "name": "BMW i3",
+    "brand": "BMW",
+    "price": 120000,
+    "production": 2021,
+    "accessories": [
+      { "name": "System nawigacji BMW Professional", "price": 3000 },
+      { "name": "Ogrzewane siedzenia", "price": 2000 }
+    ],
+    "photo": "https://example.com/bmw_i3.jpg"
+  },
+
+  {
+    "name": "Toyota RAV4",
+    "brand": "Toyota",
+    "price": 220000,
+    "production": 2023,
+    "accessories": [
+      { "name": "System bezpieczeństwa Toyota Safety Sense", "price": 3500 },
+      { "name": "Panoramiczny dach szklany", "price": 4000 }
+    ],
+    "photo": "https://example.com/toyota_rav4.jpg"
+  },
+  {
+    "name": "Toyota Corolla",
+    "brand": "Toyota",
+    "price": 180000,
+    "production": 2022,
+    "accessories": [
+      { "name": "System audio JBL", "price": 3000 },
+      { "name": "Klimatyzacja dwustrefowa", "price": 2000 }
+    ],
+    "photo": "https://example.com/toyota_corolla.jpg"
+  },
+  {
+    "name": "Toyota Camry",
+    "brand": "Toyota",
+    "price": 200000,
+    "production": 2023,
+    "accessories": [
+      { "name": "Nawigacja GPS", "price": 3500 },
+      { "name": "Ogrzewane fotele przednie", "price": 2500 }
+    ],
+    "photo": "https://example.com/toyota_camry.jpg"
+  },
+  {
+    "name": "Toyota Highlander",
+    "brand": "Toyota",
+    "price": 250000,
+    "production": 2022,
+    "accessories": [
+      { "name": "System multimedialny z ekranem dotykowym", "price": 4000 },
+      { "name": "System kamer 360 stopni", "price": 3500 }
+    ],
+    "photo": "https://example.com/toyota_highlander.jpg"
+  },
+  {
+    "name": "Toyota Yaris",
+    "brand": "Toyota",
+    "price": 150000,
+    "production": 2021,
+    "accessories": [
+      { "name": "System bezpieczeństwa Toyota Safety Sense", "price": 2500 },
+      { "name": "Automatyczna klimatyzacja", "price": 2000 }
+    ],
+    "photo": "https://example.com/toyota_yaris.jpg"
+  },
+  {
+    "name": "Fiat 500",
+    "brand": "Fiat",
+    "price": 60000,
+    "production": 2020,
+    "accessories": [
+      { "name": "Czujniki parkowania", "price": 1500 },
+      { "name": "Automatyczna klimatyzacja", "price": 2000 }
+    ],
+    "photo": "https://example.com/fiat_500.jpg"
+  },
+  {
+    "name": "Fiat Panda",
+    "brand": "Fiat",
+    "price": 45000,
+    "production": 2021,
+    "accessories": [
+      { "name": "System audio Beats", "price": 2000 },
+      { "name": "Elektrycznie regulowane lusterka", "price": 1000 }
+    ],
+    "photo": "https://example.com/fiat_panda.jpg"
+  },
+  {
+    "name": "Fiat Tipo",
+    "brand": "Fiat",
+    "price": 55000,
+    "production": 2022,
+    "accessories": [
+      { "name": "System nawigacji GPS", "price": 2500 },
+      { "name": "Podgrzewane fotele przednie", "price": 1500 }
+    ],
+    "photo": "https://example.com/fiat_tipo.jpg"
+  },
+  {
+    "name": "Fiat 500X",
+    "brand": "Fiat",
+    "price": 70000,
+    "production": 2021,
+    "accessories": [
+      { "name": "System multimedialny Uconnect", "price": 3000 },
+      { "name": "Światła LED", "price": 2000 }
+    ],
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/2010_Fiat_Panda.jpg/338px-2010_Fiat_Panda.jpg"
+  },
+  {
+    "name": "Fiat Doblo",
+    "brand": "Fiat",
+    "price": 80000,
+    "production": 2020,
+    "accessories": [
+      { "name": "Tempomat", "price": 1500 },
+      { "name": "Elektryczne szyby przednie", "price": 1000 }
+    ],
+    "photo": "https://example.com/fiat_doblo.jpg"
+  }
+]

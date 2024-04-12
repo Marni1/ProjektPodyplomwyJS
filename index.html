@@ -1,38 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/e6af6ff9dd.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="./styles/reset.css" />
+    <link rel="stylesheet" href="./styles/global.css" />
     <link rel="stylesheet" href="./styles/theme.css" />
     <link rel="stylesheet" href="./styles/main.css" />
+    <script src="index.js" defer></script>
     <title>CarSell</title>
   </head>
   <body>
-    <header>
-      <nav class="nav">
-        <div class="nav__container container">
-          <a class="nav__link-logo">
-            <h1 class="nav__logo">Car<span>Sell</span></h1>
-          </a>
-          <ul class="nav__links">
-            <li class="nav__link"><a>LINK 1</a></li>
-            <li class="nav__link"><a>LINK 2</a></li>
-            <li class="nav__link"><a>LINK 3</a></li>
-          </ul>
+    <nav class="nav">
+      <div class="nav__container container">
+        <a class="nav__link-logo">
+          <h1 class="nav__logo">CAR<span>SELL</span></h1>
+        </a>
+        <ul class="nav__links">
+          <li class="nav__item"><a class="nav__link">LINK 1</a></li>
+          <li class="nav__item"><a class="nav__link">LINK 2</a></li>
+          <li class="nav__item"><a class="nav__link">LINK 3</a></li>
+        </ul>
+      </div>
+    </nav>
+    <section class="hero__section">
+      <div class="hero__shadow"></div>
+      <div class="hero__content">
+        <h2 class="hero__heading">U nas znajdziesz swój wymarzony samochód</h2>
+        <p>Największy wybór nowych oraz używanych aut</p>
+        <button class="hero__button">Sprawdź nasze oferty!</button>
+      </div>
+    </section>
+    <main>
+      <section class="offers">
+        <div class="offers__container container">
+          <h2 class="offers__heading"><span>Poznaj nasze oferty</span></h2>
+          <div class="offers__search">
+            <div class="search__area">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input
+                type="search"
+                class="search__input"
+                placeholder="Wpisz model samochodu"
+              />
+            </div>
+            <div>
+              <i class="fa-solid fa-filter"></i>
+              <label>
+                <input type="checkbox" name="BMW" id="BMW" />
+                BMW
+              </label>
+            </div>
+          </div>
         </div>
-      </nav>
-      <div class="hero__section">
-        <div class="hero__shadow"></div>
-        <div class="hero__content">
-          <h2>
-            CARSELL
-          </h2>
-          <p>U nas znajdziesz swój wymarzony samochód</p>
-          <button> Sprawdź nasze oferty!</button>
+        <div class="offers__list">
+          <div class="offer__car">
+            <img src="https://picsum.photos/200/200" alt="" class="car__img" />
+            <h3 class="car__model">X5</h3>
+            <p class="car__brand">BMW</p>
+            <p class="car__price">3000zł</p>
+            <button class="car__select">Sprawdź oferte</button>
+          </div>
+          <div class="offer__car">
+            <img src="https://picsum.photos/200/200" alt="" class="car__img" />
+            <h3 class="car__model">X5</h3>
+            <p class="car__brand">BMW</p>
+            <p class="car__price">3000zł</p>
+            <button class="car__select">Sprawdź oferte</button>
+          </div>
+          <div class="offer__car">
+            <img src="https://picsum.photos/200/200" alt="" class="car__img" />
+            <h3 class="car__model">X5</h3>
+            <p class="car__brand">BMW</p>
+            <p class="car__price">3000zł</p>
+            <button class="car__select">Sprawdź oferte</button>
+          </div>
+          <div class="offer__car">
+            <img src="https://picsum.photos/200/200" alt="" class="car__img" />
+            <h3 class="car__model">X5</h3>
+            <p class="car__brand">BMW</p>
+            <p class="car__price">3000zł</p>
+            <button class="car__select">Sprawdź oferte</button>
+          </div>
         </div>
-      <div>
-    </header>
-    <main style='height: 100vh;'></main>
+      </section>
+    </main>
   </body>
 </html>
