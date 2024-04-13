@@ -16,76 +16,138 @@
   </head>
   <body>
     <nav class="nav">
-      <div class="nav__container container">
-        <a class="nav__link-logo">
-          <h1 class="nav__logo">CAR<span>SELL</span></h1>
-        </a>
-        <ul class="nav__links">
-          <li class="nav__item"><a class="nav__link">LINK 1</a></li>
-          <li class="nav__item"><a class="nav__link">LINK 2</a></li>
-          <li class="nav__item"><a class="nav__link">LINK 3</a></li>
-        </ul>
+      <div class="nav__homepage active">
+        <div class="nav__container container">
+          <a class="nav__link-logo">
+            <h1 class="nav__logo">CAR<span>SELL</span></h1>
+          </a>
+          <ul class="nav__links">
+            <li class="nav__item"><a class="nav__link">LINK 1</a></li>
+            <li class="nav__item"><a class="nav__link">LINK 2</a></li>
+            <li class="nav__item"><a class="nav__link">LINK 3</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="nav__buyform">
+        <div class="nav__container container">
+          <button class="go-back">
+            <i class="fa-solid fa-arrow-left"></i>
+          </button>
+          <a class="nav__link-logo">
+            <h1 class="nav__logo">CAR<span>SELL</span></h1>
+          </a>
+        </div>
       </div>
     </nav>
-    <section class="hero__section">
-      <div class="hero__shadow"></div>
-      <div class="hero__content">
-        <h2 class="hero__heading">U nas znajdziesz swój wymarzony samochód</h2>
-        <p>Największy wybór nowych oraz używanych aut</p>
-        <button class="hero__button">Sprawdź nasze oferty!</button>
-      </div>
-    </section>
     <main>
-      <section class="offers">
-        <div class="offers__container container">
-          <h2 class="offers__heading"><span>Poznaj nasze oferty</span></h2>
-          <div class="offers__search">
-            <div class="search__area">
-              <i class="fa-solid fa-magnifying-glass"></i>
-              <input
-                type="search"
-                class="search__input"
-                placeholder="Wpisz model samochodu"
+      <section class="homepage active">
+        <header class="hero__section">
+          <div class="hero__shadow"></div>
+          <div class="hero__content">
+            <h2 class="hero__heading">
+              U nas znajdziesz swój wymarzony samochód
+            </h2>
+            <p>Największy wybór nowych oraz używanych aut</p>
+            <a href="#offers"
+              ><button class="hero__button">Sprawdź nasze oferty!</button></a
+            >
+          </div>
+        </header>
+        <section id="offers" class="offers">
+          <div class="offers__container container">
+            <h2 class="offers__heading"><span>Poznaj nasze oferty</span></h2>
+            <div class="offers__search">
+              <div class="search__area">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input
+                  type="search"
+                  class="search__input"
+                  placeholder="Wpisz model samochodu"
+                />
+              </div>
+              <div>
+                <i class="fa-solid fa-filter"></i>
+                <label>
+                  <input type="checkbox" name="BMW" id="BMW" />
+                  BMW
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="offers__list">
+            <div class="offer__car">
+              <img
+                src="https://picsum.photos/200/200"
+                alt=""
+                class="car__img"
               />
+              <h3 class="car__model">X5</h3>
+              <p class="car__brand">BMW</p>
+              <p class="car__price">3000zł</p>
+              <button class="car__select">Sprawdź oferte</button>
             </div>
-            <div>
-              <i class="fa-solid fa-filter"></i>
-              <label>
-                <input type="checkbox" name="BMW" id="BMW" />
-                BMW
-              </label>
+            <div class="offer__car">
+              <img
+                src="https://picsum.photos/200/200"
+                alt=""
+                class="car__img"
+              />
+              <h3 class="car__model">X5</h3>
+              <p class="car__brand">BMW</p>
+              <p class="car__price">3000zł</p>
+              <button class="car__select">Sprawdź oferte</button>
+            </div>
+            <div class="offer__car">
+              <img
+                src="https://picsum.photos/200/200"
+                alt=""
+                class="car__img"
+              />
+              <h3 class="car__model">X5</h3>
+              <p class="car__brand">BMW</p>
+              <p class="car__price">3000zł</p>
+              <button class="car__select">Sprawdź oferte</button>
+            </div>
+            <div class="offer__car">
+              <img
+                src="https://picsum.photos/200/200"
+                alt=""
+                class="car__img"
+              />
+              <h3 class="car__model">X5</h3>
+              <p class="car__brand">BMW</p>
+              <p class="car__price">3000zł</p>
+              <button class="car__select">Sprawdź oferte</button>
             </div>
           </div>
-        </div>
-        <div class="offers__list">
-          <div class="offer__car">
-            <img src="https://picsum.photos/200/200" alt="" class="car__img" />
-            <h3 class="car__model">X5</h3>
-            <p class="car__brand">BMW</p>
-            <p class="car__price">3000zł</p>
-            <button class="car__select">Sprawdź oferte</button>
-          </div>
-          <div class="offer__car">
-            <img src="https://picsum.photos/200/200" alt="" class="car__img" />
-            <h3 class="car__model">X5</h3>
-            <p class="car__brand">BMW</p>
-            <p class="car__price">3000zł</p>
-            <button class="car__select">Sprawdź oferte</button>
-          </div>
-          <div class="offer__car">
-            <img src="https://picsum.photos/200/200" alt="" class="car__img" />
-            <h3 class="car__model">X5</h3>
-            <p class="car__brand">BMW</p>
-            <p class="car__price">3000zł</p>
-            <button class="car__select">Sprawdź oferte</button>
-          </div>
-          <div class="offer__car">
-            <img src="https://picsum.photos/200/200" alt="" class="car__img" />
-            <h3 class="car__model">X5</h3>
-            <p class="car__brand">BMW</p>
-            <p class="car__price">3000zł</p>
-            <button class="car__select">Sprawdź oferte</button>
-          </div>
+        </section>
+      </section>
+      <section class="buypage">
+        <div class="buyform__container container">
+          <form class="buypage__form">
+            <label>
+              <input
+                type="radio"
+                id="cash"
+                name="pay"
+                value="gotówka"
+                checked
+              />
+              Gotówka
+            </label>
+            <label>
+              <input type="radio" id="leasing" name="pay" value="leasing" />
+              Leasing
+            </label>
+            <label>
+              Imię i nazwisko
+              <input type="text" id="name" />
+            </label>
+            <label>
+              <select name="delivery" id="delivery"></select>
+            </label>
+          </form>
+          <div class="buyform__selectedcar"></div>
         </div>
       </section>
     </main>

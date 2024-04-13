@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
+* {
+  scroll-behavior: smooth;
+  scroll-margin-top: 5rem;
+}
+
 body {
   font-family: "Montserrat", sans-serif;
   background-color: var(--background-color);
@@ -20,4 +25,13 @@ button {
   max-width: 1300px;
   width: 100%;
   margin: 0 auto;
+}
+.buypage.active,
+.homepage.active,
+.nav__homepage.active,
+.nav__buyform.active {
+  display: block;
+}
+main {
+  margin-top: 5rem;
 }

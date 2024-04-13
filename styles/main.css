@@ -9,6 +9,15 @@
   background-color: var(--background-color);
   z-index: 100;
 }
+.nav__homepage {
+  display: none;
+  width: 100%;
+}
+.nav__buyform {
+  display: none;
+  width: 100%;
+}
+
 .nav__link-logo {
   display: flex;
   align-items: center;
@@ -38,6 +47,9 @@
 .nav__link:hover {
   border-bottom: 2px solid var(--main-color);
   color: var(--main-color);
+}
+.homepage {
+  display: none;
 }
 .hero__section {
   position: relative;
@@ -129,4 +141,7 @@
   grid-template-columns: repeat(4, 200px);
   justify-content: center;
   gap: 1rem;
+}
+.buypage {
+  display: none;
 }
