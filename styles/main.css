@@ -145,3 +145,13 @@
 .buypage {
   display: none;
 }
+.buypage__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.buypage__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: calc(100vh - 5rem);
+}

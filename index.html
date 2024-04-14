@@ -83,7 +83,10 @@
               />
               <h3 class="car__model">X5</h3>
               <p class="car__brand">BMW</p>
-              <p class="car__price">3000zł</p>
+              <p class="car__year">Rok:2020</p>
+              <p class="car__millage">Przebieg:1000km</p>
+              <p class="car__engine">Moc: 20KM</p>
+              <p class="car__price">Cena:3000zł</p>
               <button class="car__select">Sprawdź oferte</button>
             </div>
             <div class="offer__car">
@@ -123,7 +126,7 @@
         </section>
       </section>
       <section class="buypage">
-        <div class="buyform__container container">
+        <div class="buypage__container container">
           <form class="buypage__form">
             <label>
               <input
@@ -144,10 +147,37 @@
               <input type="text" id="name" />
             </label>
             <label>
+              Data odbioru;
               <select name="delivery" id="delivery"></select>
             </label>
           </form>
-          <div class="buyform__selectedcar"></div>
+          <div class="buypage__selectedcar">
+            <img class="selectedcar__img" />
+            <p class="selectedcar__brand">BMW</p>
+            <p class="selectedcar__model">X7</p>
+            <p class="selectedcar__year">2022</p>
+            <p class="selectedcar__power">220KM</p>
+            <p class="selected__mileage">110km</p>
+            <p></p>
+          </div>
+          <div class="buypage__accesories">
+            <h2 class="accessories__header">Dodatki:</h2>
+            <ul class="accessories">
+              <li class="accessories__item">Dodatkowe ubezpieczenie</li>
+              <li class="accessories__item">Dodatkowe ubezpieczenie</li>
+            </ul>
+          </div>
+          <div class="buypage__summary">
+            <h2 class="summary__header">Podsumowanie:</h2>
+            <ul class="summary__cart">
+              <li class="summary__item">
+                <p>Nazwa</p>
+                <p>Cena</p>
+              </li>
+            </ul>
+            <p class="summary__cost">Łączna cena: <span>3000</span></p>
+          </div>
+          <button class="buypage__buyBtn">KUPUJE</button>
         </div>
       </section>
     </main>
