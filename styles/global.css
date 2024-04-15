@@ -3,6 +3,7 @@
 * {
   scroll-behavior: smooth;
   scroll-margin-top: 5rem;
+  box-sizing: border-box;
 }
 
 body {
@@ -21,16 +22,19 @@ a {
 button {
   cursor: pointer;
 }
+
 .container {
   max-width: 1300px;
   margin: 0 auto;
 }
 .buypage.active,
 .homepage.active,
+.finalpage.active,
 .nav__homepage.active,
 .nav__buyform.active {
   display: block;
 }
-main {
+.homepage,
+.buypage {
   margin-top: 5rem;
 }

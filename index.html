@@ -40,7 +40,7 @@
       </div>
     </nav>
     <main>
-      <section class="homepage active">
+      <section class="homepage">
         <header class="hero__section">
           <div class="hero__shadow"></div>
           <div class="hero__content">
@@ -95,10 +95,12 @@
                 alt=""
                 class="car__img"
               />
-              <h3 class="car__model">X5</h3>
-              <p class="car__brand">BMW</p>
-              <p class="car__price">3000zł</p>
-              <button class="car__select">Sprawdź oferte</button>
+              <div class="car__description">
+                <h3 class="car__model">X5</h3>
+                <p class="car__brand">BMW</p>
+                <p class="car__price">3000zł</p>
+                <button class="car__select">Sprawdź oferte</button>
+              </div>
             </div>
             <div class="offer__car">
               <img
@@ -128,39 +130,47 @@
       <section class="buypage">
         <div class="buypage__container container">
           <form class="buypage__form">
-            <label>
-              <input
-                type="radio"
-                id="cash"
-                name="pay"
-                value="gotówka"
-                checked
-              />
-              Gotówka
-            </label>
-            <label>
-              <input type="radio" id="leasing" name="pay" value="leasing" />
-              Leasing
-            </label>
-            <label>
-              Imię i nazwisko
-              <input type="text" id="name" />
-            </label>
-            <label>
-              Data odbioru;
-              <select name="delivery" id="delivery"></select>
-            </label>
+            <h2 class="buypage__header">Wypełnij formularz</h2>
+            <div class="input_container">
+              <label class="name" for="name"> Imię i nazwisko: </label>
+              <input type="text" id="name" class="input" />
+            </div>
+            <div class="input_container">
+              <label class="form__date"> Data odbioru: </label>
+              <select name="delivery" id="delivery" class="input">
+                <option disabled selected value="">Wybierz termin</option>
+              </select>
+            </div>
+            <div class="buyform__radio">
+              <p>Wybierz rodzaj płatności:</p>
+              <label>
+                <input
+                  type="radio"
+                  id="cash"
+                  name="pay"
+                  value="gotówka"
+                  checked
+                />
+                Gotówka
+              </label>
+              <label>
+                <input type="radio" id="leasing" name="pay" value="leasing" />
+                Leasing
+              </label>
+            </div>
+            <p class="form__error"></p>
           </form>
           <div class="buypage__selectedcar">
             <img class="selectedcar__img" />
-            <p class="selectedcar__brand">BMW</p>
-            <p class="selectedcar__model">X7</p>
-            <p class="selectedcar__year">2022</p>
-            <p class="selectedcar__power">220KM</p>
-            <p class="selected__mileage">110km</p>
-            <p></p>
+            <div class="selectedcar__details">
+              <p class="selectedcar__brand">BMW</p>
+              <p class="selectedcar__model">X7</p>
+              <p class="selectedcar__year">2022</p>
+              <p class="selectedcar__power">220KM</p>
+              <p class="selected__mileage">110km</p>
+            </div>
           </div>
-          <div class="buypage__accesories">
+          <div class="buypage__accessories">
             <h2 class="accessories__header">Dodatki:</h2>
             <ul class="accessories">
               <li class="accessories__item">Dodatkowe ubezpieczenie</li>
@@ -168,16 +178,46 @@
             </ul>
           </div>
           <div class="buypage__summary">
-            <h2 class="summary__header">Podsumowanie:</h2>
-            <ul class="summary__cart">
-              <li class="summary__item">
-                <p>Nazwa</p>
-                <p>Cena</p>
-              </li>
-            </ul>
-            <p class="summary__cost">Łączna cena: <span>3000</span></p>
+            <div>
+              <h2 class="summary__header">Wybrane dodatki:</h2>
+              <ul class="summary__cart">
+                <li class="summary__item">
+                  <p>Nazwa</p>
+                  <p>Cena</p>
+                </li>
+              </ul>
+            </div>
           </div>
-          <button class="buypage__buyBtn">KUPUJE</button>
+
+          <div class="summary_cost">
+            <p class="summary__carCost">
+              Samochód: <span class="car__cost"></span> zł
+            </p>
+            <p class="summary__accesories">
+              Akcesoria: <span class="accessories__cost"></span> zł
+            </p>
+            <p class="summary__total">
+              Łącznie: <span class="total__cost"></span> zł
+            </p>
+          </div>
+          <button class="buypage__buyBtn">KUP TERAZ</button>
+        </div>
+      </section>
+      <section class="finalpage active">
+        <div class="finalpage__container container">
+          <h2 class="finalpage_header">Dziekujemy za zakup auta BMW X7</h2>
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/BMW_X3_%28E83%29_Facelift_front_20100926.jpg/360px-BMW_X3_%28E83%29_Facelift_front_20100926.jpg"
+          />
+          <p class="finalpage__text">
+            Łączny koszt zamówienia wynosi:<span
+              class="finalpage__totalcost"
+            ></span>
+            zł
+          </p>
+          <p class="finalpage__text">
+            Forma płatności:<span class="finalpage__paymentMehod"></span>
+          </p>
         </div>
       </section>
     </main>

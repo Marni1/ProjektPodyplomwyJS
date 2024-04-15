@@ -42,7 +42,7 @@
       { "id": 11, "name": "Kontrola Gestów", "price": 2000 },
       { "id": 12, "name": "Asystent Parkowania", "price": 3000 }
     ],
-    "photo": "https://example.com/bmw_x3.jpg"
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/BMW_X3_%28E83%29_Facelift_front_20100926.jpg/360px-BMW_X3_%28E83%29_Facelift_front_20100926.jpg"
   },
   {
     "brand": "BMW",

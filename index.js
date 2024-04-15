@@ -1,8 +1,8 @@
 const $homepage = document.querySelector(".homepage");
-const $buyform = document.querySelector(".buypage");
+const $buypage = document.querySelector(".buypage");
 const $offersList = document.querySelector(".offers__list");
 const $goBackBtn = document.querySelector(".go-back");
-const $navBuyForm = document.querySelector(".nav__buyform");
+const $navBuyPage = document.querySelector(".nav__buyform");
 const $navHomepage = document.querySelector(".nav__homepage");
 const $payRadios = document.querySelectorAll("input[name=pay]");
 const $nameField = document.querySelector("#name");
@@ -11,6 +11,12 @@ const $form = document.querySelector(".buypage__form");
 const $selectedCarDetails = document.querySelector(".buypage__selectedcar");
 const $accessoriesList = document.querySelector(".accessories");
 const $summaryCart = document.querySelector(".summary__cart");
+const $carCost = document.querySelector(".car__cost");
+const $accessoriesCost = document.querySelector(".accessories__cost");
+const $totalCost = document.querySelector(".total__cost");
+const $buyBtn = document.querySelector(".buypage__buyBtn");
+const $formError = document.querySelector(".form__error");
+const $nav = document.querySelector("nav");
 
 let CARS = [];
 let SELECTEDCAR = null;
@@ -21,12 +27,36 @@ const FORMFIELDS = {
   date: null,
 };
 MAXDATE = 14;
+const goToFinallPage = () => {
+  $nav.style.display = "none";
+};
 
-const calculateTotalPRICE = () => {
+const handleSubmit = (e) => {
+  e.preventDefault();
+  const { name, date } = FORMFIELDS;
+  $formError.innerText = "";
+  const splitName = FORMFIELDS.name.split(" ");
+  if (name === "") {
+    $formError.innerText = "Pole imię i nazwisko nie może być puste";
+    return;
+  }
+  if (splitName.length < 2) {
+    $formError.innerText = "Imię i nazwisko musi być oddzielone spacją";
+    return;
+  }
+  if (date === null) {
+    $formError.innerText = "Wybierz date!";
+    return;
+  }
+};
+const renderPrices = () => {
   const cartCost = CART.reduce((acc, item) => {
     return acc + Number(item.price);
   }, 0);
-  console.log(cartCost);
+  const totalPrice = cartCost + SELECTEDCAR.price;
+  $carCost.innerText = SELECTEDCAR.price;
+  $accessoriesCost.innerText = cartCost;
+  $totalCost.innerText = totalPrice;
 };
 const generateDate = (daysaHead = 0) => {
   const date = new Date();
@@ -41,9 +71,6 @@ const renderDateOptions = () => {
     const date = generateDate(i);
     option.value = date;
     option.innerText = date;
-    if (i === 1) {
-      FORMFIELDS.date = date;
-    }
     $deliverySelect.appendChild(option);
   }
 };
@@ -59,46 +86,65 @@ const handleNameChange = (e) => {
 const changePages = () => {
   $homepage.classList.toggle("active");
   $navHomepage.classList.toggle("active");
-  $buyform.classList.toggle("active");
-  $navBuyForm.classList.toggle("active");
+  $buypage.classList.toggle("active");
+  $navBuyPage.classList.toggle("active");
+};
+const showBuyPage = () => {
+  $homepage.classList.remove("active");
+  $navHomepage.classList.remove("active");
+  $buypage.classList.add("active");
+  $navBuyPage.classList.add("active");
+};
+const showHomePage = () => {
+  $homepage.classList.add("active");
+  $navHomepage.classList.add("active");
+  $buypage.classList.remove("active");
+  $navBuyPage.classList.remove("active");
 };
 
 const selectCar = (car) => {
   SELECTEDCAR = car;
+  CART = [];
 
   renderCarDetails(car);
   renderCarAccesories(car);
+  renderCart();
+  renderPrices();
 
   //chowanie strony
-  changePages();
+  showBuyPage();
 };
 const renderCarDetails = (car) => {
   $selectedCarDetails.innerHTML = `
-  <img class="selectedcar__img" />
-  <p class="selectedcar__brand">${car.brand}</p>
-  <p class="selectedcar__model">${car.model}</p>
-  <p class="selectedcar__year">${car.year}</p>
-  <p class="selectedcar__power">${car.power}</p>
-  <p class="selected__mileage">${car.mileage}</p>
-  
+  <img class="selectedcar__img" src="${car.photo}" />
+  <div class='selectedcar__details'>
+  <p class="selectedcar__brand">Marka: ${car.brand}</p>
+  <p class="selectedcar__model">Model: ${car.model}</p>
+  <p class="selectedcar__year">Rocznik: ${car.year}</p>
+  <p class="selectedcar__power">Moc: ${car.power}</p>
+  <p class="selected__mileage">Przebieg: ${car.mileage}</p>
+  </div>
   `;
 };
 const renderCar = (car) => {
   const carCard = document.createElement("div");
   carCard.classList.add("offer__car");
   carCard.innerHTML = ` <img src=${car.photo} alt="" class="car__img" />
+  <div class="car__description">
   <p class="car__brand">${car.brand}</p>
     <p class="car__model">${car.model}</h3>
     <p class="car__year">Rok: ${car.year}</p>
     <p class="car__millage">Przebieg: ${car.mileage}</p>
     <p class="car__engine">Moc: ${car.power}</p>
-    <p class="car__price">Cena: ${car.price}</p>`;
+    <p class="car__price">Cena: ${car.price} zł</p>
+    </div`;
   const selectButton = document.createElement("button");
-  selectButton.innerText = "Sprawdź oferte";
-  selectButton.className = "car__select";
-  selectButton.addEventListener("click", () => {
+  carCard.addEventListener("click", () => {
     selectCar(car);
   });
+  selectButton.innerText = "Sprawdź oferte";
+  selectButton.className = "car__select";
+
   carCard.appendChild(selectButton);
   $offersList.appendChild(carCard);
 };
@@ -123,15 +169,17 @@ const renderAcessorie = (accessorie, car) => {
   const price = document.createElement("p");
   const name = document.createElement("p");
   const button = document.createElement("button");
-  button.innerText = "+";
+  item.classList.add("accessories__item");
+  button.className = "accessories__button";
+  button.innerHTML = `<i class="fa-solid fa-plus accessories__button"></i>`;
   price.innerText = accessorie.name;
-  name.innerText = accessorie.price;
+  name.innerText = `${accessorie.price}zł`;
   button.addEventListener("click", () => {
     const newCart = CART.concat(accessorie);
     CART = newCart;
     renderCarAccesories(car);
     renderCart();
-    calculateTotalPRICE();
+    renderPrices();
   });
   item.append(price, name, button);
   $accessoriesList.appendChild(item);
@@ -145,27 +193,32 @@ const renderCart = () => {
     $summaryCart.appendChild(info);
     return;
   }
-  CART.forEach((item) => {
-    const cartItem = document.createElement("li");
-    cartItem.innerHTML = `
-    <p>${item.name}</p>
-    <p>${item.price}</p>
-    `;
-    const button = document.createElement("button");
-    button.innerText = "-";
-    cartItem.appendChild(button);
-    button.addEventListener("click", () => {
-      const cartAfterRemove = CART.filter((cartItem) => {
-        return item.id !== cartItem.id;
-      });
-      CART = cartAfterRemove;
-      renderCarAccesories(SELECTEDCAR);
-      renderCart();
-      calculateTotalPRICE();
-    });
+  CART.forEach(renderCartItem);
+};
 
-    $summaryCart.appendChild(cartItem);
+const renderCartItem = (item) => {
+  const cartItem = document.createElement("li");
+  cartItem.innerHTML = `
+  <p>${item.name}</p>
+  <p>${item.price}zł</p>
+  `;
+  cartItem.className = "summary__item";
+  const button = document.createElement("button");
+  button.innerHTML = `<i class="fa-solid fa-trash"></i>`;
+  button.className = `cart__button`;
+  cartItem.appendChild(button);
+
+  button.addEventListener("click", () => {
+    const cartAfterRemove = CART.filter((cartItem) => {
+      return item.id !== cartItem.id;
+    });
+    CART = cartAfterRemove;
+    renderCarAccesories(SELECTEDCAR);
+    renderCart();
+    renderPrices();
   });
+
+  $summaryCart.appendChild(cartItem);
 };
 
 const getCars = async () => {
@@ -177,8 +230,15 @@ const getCars = async () => {
 getCars();
 renderDateOptions();
 
-$goBackBtn.addEventListener("click", changePages);
+$goBackBtn.addEventListener("click", showHomePage);
 $payRadios.forEach((radio) => {
   radio.addEventListener("click", handleCarPaymentOption);
 });
+
 $nameField.addEventListener("input", handleNameChange);
+$form.addEventListener("submit", handleSubmit);
+$deliverySelect.addEventListener("input", (e) => {
+  FORMFIELDS.date = e.target.value;
+});
+
+$nav.style.display = "none";
