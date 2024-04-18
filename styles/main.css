@@ -151,7 +151,13 @@
   display: grid;
   grid-template-columns: repeat(4, 200px);
   justify-content: center;
+  align-items: start;
   gap: 1rem;
+  min-height: 500px;
+}
+.offers__message {
+  grid-column: 1/5;
+  text-align: center;
 }
 .offer__car {
   display: flex;
@@ -178,6 +184,10 @@
   background-color: none;
   background-color: var(--main-color);
   color: var(--background-color);
+}
+.car__img {
+  width: 100%;
+  height: 150px;
 }
 
 .buypage__form {
@@ -290,7 +300,8 @@
   font-weight: 800;
   color: var(--main-color);
 }
-.buypage__buyBtn {
+.buypage__buyBtn,
+.finalpage__btn {
   background: none;
   background-color: var(--main-color);
   color: var(--background-color);
@@ -302,7 +313,8 @@
   place-self: start;
   justify-self: start;
 }
-.buypage__buyBtn:hover {
+.buypage__buyBtn:hover,
+.finalpage__btn:hover {
   background-color: var(--hover-color);
 }
 
@@ -311,6 +323,27 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  gap: 2rem;
   width: 100%;
   height: 100vh;
+}
+.finalpage__header {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--main-color);
+}
+.finalpage__img {
+  height: 300px;
+}
+.finalpage__summary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.finalpage__paymentMehod {
+  text-transform: uppercase;
+}
+.finalpage__btn {
+  width: 100%;
+  margin-top: 2rem;
 }

@@ -40,7 +40,7 @@
       </div>
     </nav>
     <main>
-      <section class="homepage">
+      <section class="homepage active">
         <header class="hero__section">
           <div class="hero__shadow"></div>
           <div class="hero__content">
@@ -62,68 +62,66 @@
                 <input
                   type="search"
                   class="search__input"
-                  placeholder="Wpisz model samochodu"
+                  placeholder="Wpisz model lub marke samochodu"
                 />
               </div>
               <div>
                 <i class="fa-solid fa-filter"></i>
-                <label>
-                  <input type="checkbox" name="BMW" id="BMW" />
-                  BMW
-                </label>
+                <div class="search__filters"></div>
               </div>
             </div>
           </div>
-          <div class="offers__list">
-            <div class="offer__car">
-              <img
-                src="https://picsum.photos/200/200"
-                alt=""
-                class="car__img"
-              />
-              <h3 class="car__model">X5</h3>
-              <p class="car__brand">BMW</p>
-              <p class="car__year">Rok:2020</p>
-              <p class="car__millage">Przebieg:1000km</p>
-              <p class="car__engine">Moc: 20KM</p>
-              <p class="car__price">Cena:3000zł</p>
-              <button class="car__select">Sprawdź oferte</button>
-            </div>
-            <div class="offer__car">
-              <img
-                src="https://picsum.photos/200/200"
-                alt=""
-                class="car__img"
-              />
-              <div class="car__description">
+          <div>
+            <div class="offers__list">
+              <!-- <div class="offer__car">
+                <img
+                  src="https://picsum.photos/200/200"
+                  alt=""
+                  class="car__img"
+                />
+                <h3 class="car__model">X5</h3>
+                <p class="car__brand">BMW</p>
+                <p class="car__year">Rok:2020</p>
+                <p class="car__millage">Przebieg:1000km</p>
+                <p class="car__engine">Moc: 20KM</p>
+                <p class="car__price">Cena:3000zł</p>
+                <button class="car__select">Sprawdź oferte</button>
+              </div> -->
+              <!-- <div class="offer__car">
+                <img
+                  src="https://picsum.photos/200/200"
+                  alt=""
+                  class="car__img"
+                />
+                <div class="car__description">
+                  <h3 class="car__model">X5</h3>
+                  <p class="car__brand">BMW</p>
+                  <p class="car__price">3000zł</p>
+                  <button class="car__select">Sprawdź oferte</button>
+                </div>
+              </div>
+              <div class="offer__car">
+                <img
+                  src="https://picsum.photos/200/200"
+                  alt=""
+                  class="car__img"
+                />
                 <h3 class="car__model">X5</h3>
                 <p class="car__brand">BMW</p>
                 <p class="car__price">3000zł</p>
                 <button class="car__select">Sprawdź oferte</button>
               </div>
-            </div>
-            <div class="offer__car">
-              <img
-                src="https://picsum.photos/200/200"
-                alt=""
-                class="car__img"
-              />
-              <h3 class="car__model">X5</h3>
-              <p class="car__brand">BMW</p>
-              <p class="car__price">3000zł</p>
-              <button class="car__select">Sprawdź oferte</button>
-            </div>
-            <div class="offer__car">
-              <img
-                src="https://picsum.photos/200/200"
-                alt=""
-                class="car__img"
-              />
-              <h3 class="car__model">X5</h3>
-              <p class="car__brand">BMW</p>
-              <p class="car__price">3000zł</p>
-              <button class="car__select">Sprawdź oferte</button>
-            </div>
+              <div class="offer__car">
+                <img
+                  src="https://picsum.photos/200/200"
+                  alt=""
+                  class="car__img"
+                />
+                <h3 class="car__model">X5</h3>
+                <p class="car__brand">BMW</p>
+                <p class="car__price">3000zł</p>
+                <button class="car__select">Sprawdź oferte</button>
+              </div> -->
           </div>
         </section>
       </section>
@@ -203,21 +201,27 @@
           <button class="buypage__buyBtn">KUP TERAZ</button>
         </div>
       </section>
-      <section class="finalpage active">
+      <section class="finalpage">
         <div class="finalpage__container container">
-          <h2 class="finalpage_header">Dziekujemy za zakup auta BMW X7</h2>
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/BMW_X3_%28E83%29_Facelift_front_20100926.jpg/360px-BMW_X3_%28E83%29_Facelift_front_20100926.jpg"
-          />
-          <p class="finalpage__text">
-            Łączny koszt zamówienia wynosi:<span
-              class="finalpage__totalcost"
-            ></span>
-            zł
-          </p>
-          <p class="finalpage__text">
-            Forma płatności:<span class="finalpage__paymentMehod"></span>
-          </p>
+          <h2 class="finalpage__header">
+            Dziekujemy za zakup auta
+            <span class="finalpage__carname">BMW X7</span>
+          </h2>
+          <div class="finalpage__summary">
+            <img
+              class="finalpage__img"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/BMW_X3_%28E83%29_Facelift_front_20100926.jpg/360px-BMW_X3_%28E83%29_Facelift_front_20100926.jpg"
+            />
+            <p class="finalpage__text">
+              Łączny koszt zamówienia wynosi:
+              <span class="finalpage__totalcost"></span>
+              zł
+            </p>
+            <p class="finalpage__text">
+              Forma płatności: <span class="finalpage__paymentMehod"></span>
+            </p>
+            <button class="finalpage__btn">OK</button>
+          </div>
         </div>
       </section>
     </main>

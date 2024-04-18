@@ -5,6 +5,7 @@ const $goBackBtn = document.querySelector(".go-back");
 const $navBuyPage = document.querySelector(".nav__buyform");
 const $navHomepage = document.querySelector(".nav__homepage");
 const $payRadios = document.querySelectorAll("input[name=pay]");
+const $filtersContainer = document.querySelector(".search__filters");
 const $nameField = document.querySelector("#name");
 const $deliverySelect = document.querySelector("#delivery");
 const $form = document.querySelector(".buypage__form");
@@ -17,19 +18,40 @@ const $totalCost = document.querySelector(".total__cost");
 const $buyBtn = document.querySelector(".buypage__buyBtn");
 const $formError = document.querySelector(".form__error");
 const $nav = document.querySelector("nav");
-
+const $finalPage = document.querySelector(".finalpage");
+const $finalPageHeader = document.querySelector(".finalpage__carname");
+const $finalPageImg = document.querySelector(".finalpage__img");
+const $finalPageTotalcost = document.querySelector(".finalpage__totalcost");
+const $finalPagePaymentMehod = document.querySelector(
+  ".finalpage__paymentMehod"
+);
+const $finalpPageBtn = document.querySelector(".finalpage__btn");
+const $searchInput = document.querySelector(".search__input");
 let CARS = [];
 let SELECTEDCAR = null;
 let CART = [];
-const FORMFIELDS = {
+let FORMFIELDS = {
   payment: "gotówka",
   name: "",
   date: null,
+  total: null,
+};
+FILTERS = [];
+let SEARCH_PHRASE = "";
+const resetData = () => {
+  FORMFIELDS = {
+    payment: "gotówka",
+    name: "",
+    date: null,
+    total: null,
+  };
+  SELECTEDCAR = null;
+  CART = [];
+  $payRadios[0].checked = true;
+  $nameField.value = "";
+  $deliverySelect.value = "";
 };
 MAXDATE = 14;
-const goToFinallPage = () => {
-  $nav.style.display = "none";
-};
 
 const handleSubmit = (e) => {
   e.preventDefault();
@@ -48,12 +70,14 @@ const handleSubmit = (e) => {
     $formError.innerText = "Wybierz date!";
     return;
   }
+  showFinallPage();
 };
 const renderPrices = () => {
   const cartCost = CART.reduce((acc, item) => {
     return acc + Number(item.price);
   }, 0);
   const totalPrice = cartCost + SELECTEDCAR.price;
+  FORMFIELDS.total = totalPrice;
   $carCost.innerText = SELECTEDCAR.price;
   $accessoriesCost.innerText = cartCost;
   $totalCost.innerText = totalPrice;
@@ -100,8 +124,50 @@ const showHomePage = () => {
   $navHomepage.classList.add("active");
   $buypage.classList.remove("active");
   $navBuyPage.classList.remove("active");
+  $finalPage.classList.remove("active");
+  $nav.style.display = "flex";
 };
-
+const showFinallPage = () => {
+  $homepage.classList.remove("active");
+  $navHomepage.classList.remove("active");
+  $buypage.classList.remove("active");
+  $navBuyPage.classList.remove("active");
+  $finalPage.classList.add("active");
+  $nav.style.display = "none";
+  renderFinalPageInfo();
+};
+const renderFilterOption = () => {
+  const filterOptions = CARS.map((car) => {
+    return car.brand;
+  });
+  const removedDuplicates = filterOptions.filter((filter, index) => {
+    const indexOfItem = filterOptions.indexOf(filter);
+    return indexOfItem === index;
+  });
+  removedDuplicates.forEach(renderFilter);
+};
+const renderFilter = (filterName) => {
+  const label = document.createElement("label");
+  const input = document.createElement("input");
+  FILTERS.push(filterName);
+  label.innerText = filterName;
+  input.type = "checkbox";
+  input.checked = true;
+  input.value = filterName;
+  input.addEventListener("click", (e) => {
+    if (FILTERS.includes(e.target.value)) {
+      const newFilter = FILTERS.filter((filter) => {
+        return filter !== e.target.value;
+      });
+      FILTERS = newFilter;
+    } else {
+      FILTERS.push(e.target.value);
+    }
+    renderCars();
+  });
+  label.appendChild(input);
+  $filtersContainer.appendChild(label);
+};
 const selectCar = (car) => {
   SELECTEDCAR = car;
   CART = [];
@@ -110,8 +176,6 @@ const selectCar = (car) => {
   renderCarAccesories(car);
   renderCart();
   renderPrices();
-
-  //chowanie strony
   showBuyPage();
 };
 const renderCarDetails = (car) => {
@@ -184,7 +248,29 @@ const renderAcessorie = (accessorie, car) => {
   item.append(price, name, button);
   $accessoriesList.appendChild(item);
 };
-const renderCars = (carsList, filter) => {};
+const renderCars = () => {
+  $offersList.innerHTML = "";
+  const filteredCars = CARS.filter((car) => {
+    return FILTERS.includes(car.brand);
+  });
+  const filteredCarsBySearch = filteredCars.filter(({ brand, model }) => {
+    const carBrandLowerCase = brand.toLowerCase();
+    const carModelLowetcase = model.toLowerCase();
+    const searchPhraseLowerCase = SEARCH_PHRASE.toLowerCase();
+    return (
+      carBrandLowerCase.includes(searchPhraseLowerCase) ||
+      carModelLowetcase.includes(searchPhraseLowerCase)
+    );
+  });
+  if (filteredCars.length === 0) {
+    const text = document.createElement("p");
+    text.innerText = "BRAK OFERT";
+    text.className = "offers__message";
+    $offersList.appendChild(text);
+    return;
+  }
+  filteredCarsBySearch.forEach(renderCar);
+};
 const renderCart = () => {
   $summaryCart.innerHTML = "";
   if (CART.length === 0) {
@@ -195,7 +281,12 @@ const renderCart = () => {
   }
   CART.forEach(renderCartItem);
 };
-
+const renderFinalPageInfo = () => {
+  $finalPageHeader.innerText = `${SELECTEDCAR.brand} ${SELECTEDCAR.model}`;
+  $finalPageImg.src = SELECTEDCAR.photo;
+  $finalPagePaymentMehod.innerText = FORMFIELDS.payment;
+  $finalPageTotalcost.innerText = FORMFIELDS.total;
+};
 const renderCartItem = (item) => {
   const cartItem = document.createElement("li");
   cartItem.innerHTML = `
@@ -226,9 +317,8 @@ const getCars = async () => {
   const data = await resp.json();
   CARS = data;
   CARS.forEach(renderCar);
+  renderFilterOption();
 };
-getCars();
-renderDateOptions();
 
 $goBackBtn.addEventListener("click", showHomePage);
 $payRadios.forEach((radio) => {
@@ -240,5 +330,14 @@ $form.addEventListener("submit", handleSubmit);
 $deliverySelect.addEventListener("input", (e) => {
   FORMFIELDS.date = e.target.value;
 });
-
-$nav.style.display = "none";
+$buyBtn.addEventListener("click", handleSubmit);
+$finalpPageBtn.addEventListener("click", () => {
+  showHomePage();
+  resetData();
+});
+$searchInput.addEventListener("input", (e) => {
+  SEARCH_PHRASE = e.target.value;
+  renderCars();
+});
+getCars();
+renderDateOptions();
