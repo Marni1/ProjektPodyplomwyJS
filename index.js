@@ -37,6 +37,7 @@ let FORMFIELDS = {
   total: null,
 };
 FILTERS = [];
+MAXDATE = 14;
 let SEARCH_PHRASE = "";
 const resetData = () => {
   FORMFIELDS = {
@@ -50,9 +51,11 @@ const resetData = () => {
   $payRadios[0].checked = true;
   $nameField.value = "";
   $deliverySelect.value = "";
+  let SEARCH_PHRASE = "";
+  $searchInput.value = "";
+  renderFilterOption();
+  renderCars();
 };
-MAXDATE = 14;
-
 const handleSubmit = (e) => {
   e.preventDefault();
   const { name, date } = FORMFIELDS;
@@ -98,7 +101,19 @@ const renderDateOptions = () => {
     $deliverySelect.appendChild(option);
   }
 };
-
+function debounce(func, timeout = 300) {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      func.apply(this, args);
+    }, timeout);
+  };
+}
+const debouncedSearch = debounce((e) => {
+  SEARCH_PHRASE = e.target.value;
+  renderCars();
+});
 const handleCarPaymentOption = (e) => {
   FORMFIELDS.payment = e.target.value;
   console.log(FORMFIELDS);
@@ -137,6 +152,7 @@ const showFinallPage = () => {
   renderFinalPageInfo();
 };
 const renderFilterOption = () => {
+  $filtersContainer.innerHTML = "";
   const filterOptions = CARS.map((car) => {
     return car.brand;
   });
@@ -144,6 +160,7 @@ const renderFilterOption = () => {
     const indexOfItem = filterOptions.indexOf(filter);
     return indexOfItem === index;
   });
+  console.log(removedDuplicates);
   removedDuplicates.forEach(renderFilter);
 };
 const renderFilter = (filterName) => {
@@ -311,7 +328,6 @@ const renderCartItem = (item) => {
 
   $summaryCart.appendChild(cartItem);
 };
-
 const getCars = async () => {
   const resp = await fetch("./cars.json");
   const data = await resp.json();
@@ -324,7 +340,6 @@ $goBackBtn.addEventListener("click", showHomePage);
 $payRadios.forEach((radio) => {
   radio.addEventListener("click", handleCarPaymentOption);
 });
-
 $nameField.addEventListener("input", handleNameChange);
 $form.addEventListener("submit", handleSubmit);
 $deliverySelect.addEventListener("input", (e) => {
@@ -335,9 +350,9 @@ $finalpPageBtn.addEventListener("click", () => {
   showHomePage();
   resetData();
 });
-$searchInput.addEventListener("input", (e) => {
-  SEARCH_PHRASE = e.target.value;
-  renderCars();
+$searchInput.addEventListener("input", debouncedSearch);
+
+window.addEventListener("load", () => {
+  getCars();
+  renderDateOptions();
 });
-getCars();
-renderDateOptions();

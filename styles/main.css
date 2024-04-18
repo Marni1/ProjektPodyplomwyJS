@@ -188,6 +188,7 @@
 .car__img {
   width: 100%;
   height: 150px;
+  object-fit: cover;
 }
 
 .buypage__form {
@@ -334,6 +335,7 @@
 }
 .finalpage__img {
   height: 300px;
+  object-fit: cover;
 }
 .finalpage__summary {
   display: flex;
