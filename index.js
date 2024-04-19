@@ -279,7 +279,7 @@ const renderCars = () => {
       carModelLowetcase.includes(searchPhraseLowerCase)
     );
   });
-  if (filteredCars.length === 0) {
+  if (filteredCarsBySearch.length === 0) {
     const text = document.createElement("p");
     text.innerText = "BRAK OFERT";
     text.className = "offers__message";
