@@ -28,6 +28,7 @@ const $finalPagePaymentMehod = document.querySelector(
 const $finalpPageBtn = document.querySelector(".finalpage__btn");
 const $searchInput = document.querySelector(".search__input");
 const $pageNavigation = document.querySelector(".page__pagination");
+const $filterIcon = document.querySelector(".filter_icon");
 let CARS = [];
 let SELECTEDCAR = null;
 let CART = [];
@@ -57,6 +58,8 @@ const resetData = () => {
   $deliverySelect.value = "";
   SEARCH_PHRASE = "";
   $searchInput.value = "";
+  $filterIcon.classList.remove("active");
+  $filtersContainer.classList.remove("active");
   renderFilterOption();
   renderCars();
 };
@@ -169,9 +172,11 @@ const renderFilterOption = () => {
   removedDuplicates.forEach(renderFilter);
 };
 const renderFilter = (filterName) => {
+  const div = document.createElement("div");
   const label = document.createElement("label");
   const input = document.createElement("input");
   FILTERS.push(filterName);
+  div.className = "checkbox__container";
   label.innerText = filterName;
   input.type = "checkbox";
   input.checked = true;
@@ -188,8 +193,8 @@ const renderFilter = (filterName) => {
     pageIndex = 0;
     renderCars();
   });
-  label.appendChild(input);
-  $filtersContainer.appendChild(label);
+  div.append(label, input);
+  $filtersContainer.appendChild(div);
 };
 const selectCar = (car) => {
   SELECTEDCAR = car;
@@ -386,7 +391,10 @@ $finalpPageBtn.addEventListener("click", () => {
   resetData();
 });
 $searchInput.addEventListener("input", debouncedSearch);
-
+$filterIcon.addEventListener("click", () => {
+  $filtersContainer.classList.toggle("active");
+  $filterIcon.classList.toggle("active");
+});
 window.addEventListener("load", async () => {
   await getCars();
   renderCars();
