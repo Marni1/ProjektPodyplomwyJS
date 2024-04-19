@@ -27,6 +27,7 @@ const $finalPagePaymentMehod = document.querySelector(
 );
 const $finalpPageBtn = document.querySelector(".finalpage__btn");
 const $searchInput = document.querySelector(".search__input");
+const $pageNavigation = document.querySelector(".page__pagination");
 let CARS = [];
 let SELECTEDCAR = null;
 let CART = [];
@@ -39,6 +40,8 @@ let FORMFIELDS = {
 FILTERS = [];
 MAXDATE = 14;
 let SEARCH_PHRASE = "";
+let pageIndex = 0;
+let itemsPerPage = 8;
 const resetData = () => {
   FORMFIELDS = {
     payment: "gotówka",
@@ -111,6 +114,7 @@ function debounce(func, timeout = 300) {
   };
 }
 const debouncedSearch = debounce((e) => {
+  pageIndex = 0;
   SEARCH_PHRASE = e.target.value;
   renderCars();
 });
@@ -180,6 +184,7 @@ const renderFilter = (filterName) => {
     } else {
       FILTERS.push(e.target.value);
     }
+    pageIndex = 0;
     renderCars();
   });
   label.appendChild(input);
@@ -280,13 +285,27 @@ const renderCars = () => {
     );
   });
   if (filteredCarsBySearch.length === 0) {
-    const text = document.createElement("p");
-    text.innerText = "BRAK OFERT";
-    text.className = "offers__message";
-    $offersList.appendChild(text);
+    renderNoOffersMessage();
+    renderPageNav(filteredCarsBySearch);
     return;
   }
-  filteredCarsBySearch.forEach(renderCar);
+  for (
+    let i = pageIndex * itemsPerPage;
+    i < pageIndex * itemsPerPage + itemsPerPage;
+    i++
+  ) {
+    if (!filteredCarsBySearch[i]) {
+      break;
+    }
+    renderCar(filteredCarsBySearch[i]);
+  }
+  renderPageNav(filteredCarsBySearch);
+};
+const renderNoOffersMessage = () => {
+  const text = document.createElement("p");
+  text.innerText = "BRAK OFERT";
+  text.className = "offers__message";
+  $offersList.appendChild(text);
 };
 const renderCart = () => {
   $summaryCart.innerHTML = "";
@@ -328,11 +347,25 @@ const renderCartItem = (item) => {
 
   $summaryCart.appendChild(cartItem);
 };
+const renderPageNav = (list) => {
+  $pageNavigation.innerHTML = "";
+  for (let i = 0; i < list.length / itemsPerPage; i++) {
+    const span = document.createElement("span");
+    span.innerHTML = i + 1;
+    span.addEventListener("click", (e) => {
+      pageIndex = e.target.innerHTML - 1;
+      renderCars();
+    });
+    if (i === pageIndex) {
+      span.style.fontSize = "2rem";
+    }
+    $pageNavigation.append(span);
+  }
+};
 const getCars = async () => {
   const resp = await fetch("./cars.json");
   const data = await resp.json();
   CARS = data;
-  CARS.forEach(renderCar);
   renderFilterOption();
 };
 
@@ -352,7 +385,8 @@ $finalpPageBtn.addEventListener("click", () => {
 });
 $searchInput.addEventListener("input", debouncedSearch);
 
-window.addEventListener("load", () => {
-  getCars();
+window.addEventListener("load", async () => {
+  await getCars();
+  renderCars();
   renderDateOptions();
 });
