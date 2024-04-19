@@ -49,12 +49,13 @@ const resetData = () => {
     date: null,
     total: null,
   };
+  pageIndex = 0;
   SELECTEDCAR = null;
   CART = [];
   $payRadios[0].checked = true;
   $nameField.value = "";
   $deliverySelect.value = "";
-  let SEARCH_PHRASE = "";
+  SEARCH_PHRASE = "";
   $searchInput.value = "";
   renderFilterOption();
   renderCars();
