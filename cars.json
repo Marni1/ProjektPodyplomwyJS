@@ -12,7 +12,7 @@
       { "id": 3, "name": "Podgrzewane Fotele", "price": 2500 },
       { "id": 4, "name": "Czujniki Parkowania", "price": 1500 }
     ],
-    "photo": "https://example.com/bmw_3_series.jpg"
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/2019_BMW_318d_SE_Automatic_2.0_Front.jpg/360px-2019_BMW_318d_SE_Automatic_2.0_Front.jpg"
   },
   {
     "brand": "BMW",
@@ -27,7 +27,7 @@
       { "id": 7, "name": "Kamera Surround View", "price": 3000 },
       { "id": 8, "name": "Adaptacyjny Tempomat", "price": 2000 }
     ],
-    "photo": "https://example.com/bmw_5_series.jpg"
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/2007_BMW_M5_%28E60_MY07%29_sedan_%282015-06-27%29_01.jpg/338px-2007_BMW_M5_%28E60_MY07%29_sedan_%282015-06-27%29_01.jpg"
   },
   {
     "brand": "BMW",
@@ -61,7 +61,7 @@
         "price": 2500
       }
     ],
-    "photo": "https://example.com/bmw_x5.jpg"
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/2023_BMW_G05_IMG_7715.jpg/330px-2023_BMW_G05_IMG_7715.jpg"
   },
   {
     "brand": "BMW",
@@ -76,6 +76,127 @@
       { "id": 19, "name": "Kontrola Gestów", "price": 3000 },
       { "id": 20, "name": "Asystent Widzenia Nocnego", "price": 4000 }
     ],
-    "photo": "https://example.com/bmw_7_series.jpg"
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/2017_BMW_740d_XDRIVE_M_Sport_Automatic_3.0_Front.jpg/360px-2017_BMW_740d_XDRIVE_M_Sport_Automatic_3.0_Front.jpg"
+  },
+  {
+    "brand": "Volvo",
+    "model": "S90",
+    "power": "300 KM",
+    "price": 245000,
+    "mileage": "20 000 km",
+    "year": 2022,
+    "accessories": [
+      { "id": 21, "name": "Podgrzewane Fotele", "price": 3500 },
+      { "id": 22, "name": "Szyberdach", "price": 5000 },
+      {
+        "id": 23,
+        "name": "HUD (wyświetlacz na przedniej szybie)",
+        "price": 2800
+      },
+      { "id": 24, "name": "System Audio Bowers & Wilkins", "price": 6000 }
+    ],
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/2018_Volvo_S90_R-Design_D4_Automatic_2.0_Front.jpg/360px-2018_Volvo_S90_R-Design_D4_Automatic_2.0_Front.jpg"
+  },
+  {
+    "brand": "Volvo",
+    "model": "XC60",
+    "power": "250 KM",
+    "price": 215000,
+    "mileage": "18 500 km",
+    "year": 2022,
+    "accessories": [
+      { "id": 21, "name": "Podgrzewane Fotele", "price": 3200 },
+      { "id": 22, "name": "Szyberdach", "price": 4800 },
+      {
+        "id": 23,
+        "name": "HUD (wyświetlacz na przedniej szybie)",
+        "price": 3000
+      },
+      { "id": 24, "name": "System Audio Bowers & Wilkins", "price": 5800 }
+    ],
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/2013_Volvo_XC60_%28MY13%29_T6_R-Design_wagon_%282016-01-04%29_01.jpg/360px-2013_Volvo_XC60_%28MY13%29_T6_R-Design_wagon_%282016-01-04%29_01.jpg"
+  },
+  {
+    "brand": "Volvo",
+    "model": "XC90",
+    "power": "300 KM",
+    "price": 275000,
+    "mileage": "19 200 km",
+    "year": 2022,
+    "accessories": [
+      { "id": 21, "name": "Podgrzewane Fotele", "price": 3700 },
+      { "id": 22, "name": "Szyberdach", "price": 5200 },
+      {
+        "id": 23,
+        "name": "HUD (wyświetlacz na przedniej szybie)",
+        "price": 3200
+      },
+      { "id": 24, "name": "System Audio Bowers & Wilkins", "price": 6200 }
+    ],
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/2018_Volvo_XC90_2.0.jpg/360px-2018_Volvo_XC90_2.0.jpg"
+  },
+  {
+    "brand": "Volvo",
+    "model": "V60",
+    "power": "250 KM",
+    "price": 195000,
+    "mileage": "17 800 km",
+    "year": 2022,
+    "accessories": [
+      { "id": 21, "name": "Podgrzewane Fotele", "price": 3300 },
+      { "id": 22, "name": "Szyberdach", "price": 4700 },
+      {
+        "id": 23,
+        "name": "HUD (wyświetlacz na przedniej szybie)",
+        "price": 2900
+      },
+      { "id": 24, "name": "System Audio Bowers & Wilkins", "price": 5900 }
+    ],
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/2018_Volvo_V60_Momentum_PRO_D4_Automatic_2.0_Front.jpg/360px-2018_Volvo_V60_Momentum_PRO_D4_Automatic_2.0_Front.jpg"
+  },
+  {
+    "brand": "Fiat",
+    "model": "Tipo",
+    "power": "120 KM",
+    "price": 90000,
+    "mileage": "15 000 km",
+    "year": 2022,
+    "accessories": [
+      { "id": 25, "name": "Czujniki Parkowania", "price": 1500 },
+      { "id": 26, "name": "Klimatyzacja Automatyczna", "price": 2000 },
+      { "id": 27, "name": "System Multimedialny Uconnect", "price": 1800 },
+      { "id": 28, "name": "Kamera Cofania", "price": 1200 }
+    ],
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/2017_Fiat_Tipo_Lounge_1.4_Front.jpg/480px-2017_Fiat_Tipo_Lounge_1.4_Front.jpg"
+  },
+  {
+    "brand": "Fiat",
+    "model": "500",
+    "power": "100 KM",
+    "price": 75000,
+    "mileage": "12 500 km",
+    "year": 2022,
+    "accessories": [
+      { "id": 25, "name": "Czujniki Parkowania", "price": 1400 },
+      { "id": 26, "name": "Klimatyzacja Automatyczna", "price": 1800 },
+      { "id": 27, "name": "System Multimedialny Uconnect", "price": 1600 },
+      { "id": 28, "name": "Kamera Cofania", "price": 1100 }
+    ],
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Fiat_500_Abarth_front.JPG/360px-Fiat_500_Abarth_front.JPG"
+  },
+  {
+    "brand": "Fiat",
+    "model": "Panda",
+    "power": "70 KM",
+    "price": 60000,
+    "mileage": "10 000 km",
+    "year": 2022,
+    "accessories": [
+      { "id": 25, "name": "Czujniki Parkowania", "price": 1300 },
+      { "id": 26, "name": "Klimatyzacja Automatyczna", "price": 1900 },
+      { "id": 27, "name": "System Multimedialny Uconnect", "price": 1700 },
+      { "id": 28, "name": "Kamera Cofania", "price": 1000 }
+    ],
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/2012_Fiat_Panda_Easy_1.2_Front.jpg/360px-2012_Fiat_Panda_Easy_1.2_Front.jpg"
   }
 ]

@@ -41,7 +41,7 @@ FILTERS = [];
 MAXDATE = 14;
 let SEARCH_PHRASE = "";
 let pageIndex = 0;
-let itemsPerPage = 8;
+let itemsPerPage = 4;
 const resetData = () => {
   FORMFIELDS = {
     payment: "gotówka",
@@ -353,12 +353,13 @@ const renderPageNav = (list) => {
   for (let i = 0; i < list.length / itemsPerPage; i++) {
     const span = document.createElement("span");
     span.innerHTML = i + 1;
+    span.className = "page";
     span.addEventListener("click", (e) => {
       pageIndex = e.target.innerHTML - 1;
       renderCars();
     });
     if (i === pageIndex) {
-      span.style.fontSize = "2rem";
+      span.className = "page__active";
     }
     $pageNavigation.append(span);
   }
