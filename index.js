@@ -44,7 +44,7 @@ FILTERS = [];
 MAXDATE = 14;
 let SEARCH_PHRASE = "";
 let pageIndex = 0;
-let itemsPerPage = 4;
+let itemsPerPage = 8;
 const resetData = () => {
   FORMFIELDS = {
     payment: "gotówka",
