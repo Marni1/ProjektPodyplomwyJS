@@ -29,6 +29,8 @@ const $finalpPageBtn = document.querySelector(".finalpage__btn");
 const $searchInput = document.querySelector(".search__input");
 const $pageNavigation = document.querySelector(".page__pagination");
 const $filterIcon = document.querySelector(".filter_icon");
+const $sortSelect = document.querySelector(".sort");
+let SORT = "NONE";
 let CARS = [];
 let SELECTEDCAR = null;
 let CART = [];
@@ -53,11 +55,13 @@ const resetData = () => {
   pageIndex = 0;
   SELECTEDCAR = null;
   CART = [];
+  SORT = "NONE";
   $payRadios[0].checked = true;
   $nameField.value = "";
   $deliverySelect.value = "";
   SEARCH_PHRASE = "";
   $searchInput.value = "";
+  $sortSelect.value = "NONE";
   $filterIcon.classList.remove("active");
   $filtersContainer.classList.remove("active");
   renderFilterOption();
@@ -124,7 +128,6 @@ const debouncedSearch = debounce((e) => {
 });
 const handleCarPaymentOption = (e) => {
   FORMFIELDS.payment = e.target.value;
-  console.log(FORMFIELDS);
 };
 const handleNameChange = (e) => {
   FORMFIELDS.name = e.target.value;
@@ -168,7 +171,6 @@ const renderFilterOption = () => {
     const indexOfItem = filterOptions.indexOf(filter);
     return indexOfItem === index;
   });
-  console.log(removedDuplicates);
   removedDuplicates.forEach(renderFilter);
 };
 const renderFilter = (filterName) => {
@@ -214,7 +216,7 @@ const renderCarDetails = (car) => {
   <p class="selectedcar__model">Model: ${car.model}</p>
   <p class="selectedcar__year">Rocznik: ${car.year}</p>
   <p class="selectedcar__power">Moc: ${car.power}</p>
-  <p class="selected__mileage">Przebieg: ${car.mileage}</p>
+  <p class="selected__mileage">Przebieg: ${car.mileage} km</p>
   </div>
   `;
 };
@@ -226,7 +228,7 @@ const renderCar = (car) => {
   <p class="car__brand">${car.brand}</p>
     <p class="car__model">${car.model}</h3>
     <p class="car__year">Rok: ${car.year}</p>
-    <p class="car__millage">Przebieg: ${car.mileage}</p>
+    <p class="car__millage">Przebieg: ${car.mileage} km</p>
     <p class="car__engine">Moc: ${car.power}</p>
     <p class="car__price">Cena: ${car.price} zł</p>
     </div`;
@@ -254,6 +256,22 @@ const renderCarAccesories = (car) => {
     return;
   }
   accesories.forEach((accesorie) => renderAcessorie(accesorie, car));
+};
+const sortOption = (sortValue) => {
+  switch (sortValue) {
+    case "NONE":
+      return (a, b) => 1;
+
+    case "PRICEDESC":
+      return (a, b) => a.price - b.price;
+
+    case "PRICEASC":
+      return (a, b) => b.price - a.price;
+    case "MILDESC":
+      return (a, b) => b.mileage - a.mileage;
+    case "MILASC":
+      return (a, b) => a.mileage - b.mileage;
+  }
 };
 
 const renderAcessorie = (accessorie, car) => {
@@ -290,7 +308,9 @@ const renderCars = () => {
       carModelLowetcase.includes(searchPhraseLowerCase)
     );
   });
-  if (filteredCarsBySearch.length === 0) {
+  const sortedCars = filteredCarsBySearch.sort(sortOption(SORT));
+  console.log(sortedCars);
+  if (sortedCars.length === 0) {
     renderNoOffersMessage();
     renderPageNav(filteredCarsBySearch);
     return;
@@ -300,12 +320,12 @@ const renderCars = () => {
     i < pageIndex * itemsPerPage + itemsPerPage;
     i++
   ) {
-    if (!filteredCarsBySearch[i]) {
+    if (!sortedCars[i]) {
       break;
     }
-    renderCar(filteredCarsBySearch[i]);
+    renderCar(sortedCars[i]);
   }
-  renderPageNav(filteredCarsBySearch);
+  renderPageNav(sortedCars);
 };
 const renderNoOffersMessage = () => {
   const text = document.createElement("p");
@@ -394,6 +414,10 @@ $searchInput.addEventListener("input", debouncedSearch);
 $filterIcon.addEventListener("click", () => {
   $filtersContainer.classList.toggle("active");
   $filterIcon.classList.toggle("active");
+});
+$sortSelect.addEventListener("input", (e) => {
+  SORT = e.target.value;
+  renderCars();
 });
 window.addEventListener("load", async () => {
   await getCars();

@@ -176,6 +176,14 @@
   display: block;
   color: var(--main-color);
 }
+.sort {
+  padding: 0.5rem 1rem;
+  border: none;
+  outline: none;
+}
+.sort option {
+  padding: 2rem;
+}
 
 .offers__list {
   display: grid;
