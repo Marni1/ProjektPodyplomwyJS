@@ -191,11 +191,13 @@
   justify-content: center;
   align-items: start;
   gap: 1rem;
-  min-height: 400px;
+  min-height: 610px;
 }
 .offers__message {
   grid-column: 1/5;
   text-align: center;
+  justify-self: center;
+  align-self: center;
 }
 .offer__car {
   display: flex;
