@@ -43,6 +43,7 @@
   padding: 0.5rem;
   border-bottom: 2px solid transparent;
   transition: 0.5s border ease-in 0.5s color ease-in;
+  text-decoration: none;
 }
 .nav__link:hover {
   border-bottom: 2px solid var(--main-color);
@@ -111,7 +112,8 @@
   background-color: var(--hover-color);
 }
 
-.offers__container {
+.offers__container,
+.reviews__container {
   text-align: center;
   margin-top: 3rem;
 }
@@ -209,6 +211,38 @@
 }
 .offer__car:hover {
   transform: scale(1.05);
+}
+.reviews__cards {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 1rem;
+}
+.reviews__card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: #dbe2ef;
+  border: 1px solid #c6d2e8;
+  border-radius: 1rem;
+  padding: 1rem;
+  transition: transform 0.3s ease-in;
+}
+.reviews__card:hover {
+  transform: translateY(-10px);
+}
+.reviews__user {
+  font-size: 5rem;
+  color: var(--main-color);
+}
+.reviews__username {
+  font-size: 1.5rem;
+  color: var(--main-color);
+  font-weight: 700;
+}
+.reviews__rating {
+  font-weight: 700;
 }
 .car__model,
 .car__brand {
