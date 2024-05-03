@@ -30,6 +30,7 @@ const $searchInput = document.querySelector(".search__input");
 const $pageNavigation = document.querySelector(".page__pagination");
 const $filterIcon = document.querySelector(".filter_icon");
 const $sortSelect = document.querySelector(".sort");
+
 let SORT = "NONE";
 let CARS = [];
 let SELECTEDCAR = null;
@@ -40,11 +41,12 @@ let FORMFIELDS = {
   date: null,
   total: null,
 };
-FILTERS = [];
-MAXDATE = 14;
+let FILTERS = [];
+const MAXDATE = 14;
 let SEARCH_PHRASE = "";
 let pageIndex = 0;
 let itemsPerPage = 8;
+
 const resetData = () => {
   FORMFIELDS = {
     payment: "gotówka",
@@ -67,6 +69,7 @@ const resetData = () => {
   renderFilterOption();
   renderCars();
 };
+
 const handleSubmit = (e) => {
   e.preventDefault();
   const { name, date } = FORMFIELDS;
@@ -86,6 +89,7 @@ const handleSubmit = (e) => {
   }
   showFinallPage();
 };
+
 const renderPrices = () => {
   const cartCost = CART.reduce((acc, item) => {
     return acc + Number(item.price);
@@ -96,6 +100,7 @@ const renderPrices = () => {
   $accessoriesCost.innerText = cartCost;
   $totalCost.innerText = totalPrice;
 };
+
 const generateDate = (daysaHead = 0) => {
   const date = new Date();
   const newDate = new Date(date);
@@ -103,6 +108,7 @@ const generateDate = (daysaHead = 0) => {
   const convertedNewDate = newDate.toLocaleDateString();
   return convertedNewDate;
 };
+
 const renderDateOptions = () => {
   for (let i = 1; i <= MAXDATE; i++) {
     let option = document.createElement("option");
@@ -112,6 +118,7 @@ const renderDateOptions = () => {
     $deliverySelect.appendChild(option);
   }
 };
+
 function debounce(func, timeout = 300) {
   let timer;
   return (...args) => {
@@ -121,30 +128,36 @@ function debounce(func, timeout = 300) {
     }, timeout);
   };
 }
+
 const debouncedSearch = debounce((e) => {
   pageIndex = 0;
   SEARCH_PHRASE = e.target.value;
   renderCars();
 });
+
 const handleCarPaymentOption = (e) => {
   FORMFIELDS.payment = e.target.value;
 };
+
 const handleNameChange = (e) => {
   FORMFIELDS.name = e.target.value;
   console.log(FORMFIELDS);
 };
+
 const changePages = () => {
   $homepage.classList.toggle("active");
   $navHomepage.classList.toggle("active");
   $buypage.classList.toggle("active");
   $navBuyPage.classList.toggle("active");
 };
+
 const showBuyPage = () => {
   $homepage.classList.remove("active");
   $navHomepage.classList.remove("active");
   $buypage.classList.add("active");
   $navBuyPage.classList.add("active");
 };
+
 const showHomePage = () => {
   $homepage.classList.add("active");
   $navHomepage.classList.add("active");
@@ -153,6 +166,7 @@ const showHomePage = () => {
   $finalPage.classList.remove("active");
   $nav.style.display = "flex";
 };
+
 const showFinallPage = () => {
   $homepage.classList.remove("active");
   $navHomepage.classList.remove("active");
@@ -162,6 +176,7 @@ const showFinallPage = () => {
   $nav.style.display = "none";
   renderFinalPageInfo();
 };
+
 const renderFilterOption = () => {
   $filtersContainer.innerHTML = "";
   const filterOptions = CARS.map((car) => {
@@ -173,6 +188,7 @@ const renderFilterOption = () => {
   });
   removedDuplicates.forEach(renderFilter);
 };
+
 const renderFilter = (filterName) => {
   const div = document.createElement("div");
   const label = document.createElement("label");
@@ -198,6 +214,7 @@ const renderFilter = (filterName) => {
   div.append(label, input);
   $filtersContainer.appendChild(div);
 };
+
 const selectCar = (car) => {
   SELECTEDCAR = car;
   CART = [];
@@ -208,6 +225,7 @@ const selectCar = (car) => {
   renderPrices();
   showBuyPage();
 };
+
 const renderCarDetails = (car) => {
   $selectedCarDetails.innerHTML = `
   <img class="selectedcar__img" src="${car.photo}" />
@@ -220,6 +238,7 @@ const renderCarDetails = (car) => {
   </div>
   `;
 };
+
 const renderCar = (car) => {
   const carCard = document.createElement("div");
   carCard.classList.add("offer__car");
@@ -242,6 +261,7 @@ const renderCar = (car) => {
   carCard.appendChild(selectButton);
   $offersList.appendChild(carCard);
 };
+
 const renderCarAccesories = (car) => {
   $accessoriesList.innerHTML = "";
   const accesories = car.accessories.filter((accessorie) => {
@@ -257,6 +277,7 @@ const renderCarAccesories = (car) => {
   }
   accesories.forEach((accesorie) => renderAcessorie(accesorie, car));
 };
+
 const sortOption = (sortValue) => {
   switch (sortValue) {
     case "NONE":
@@ -294,6 +315,7 @@ const renderAcessorie = (accessorie, car) => {
   item.append(price, name, button);
   $accessoriesList.appendChild(item);
 };
+
 const renderCars = () => {
   $offersList.innerHTML = "";
   const filteredCars = CARS.filter((car) => {
@@ -327,12 +349,14 @@ const renderCars = () => {
   }
   renderPageNav(sortedCars);
 };
+
 const renderNoOffersMessage = () => {
   const text = document.createElement("p");
   text.innerText = "BRAK OFERT";
   text.className = "offers__message";
   $offersList.appendChild(text);
 };
+
 const renderCart = () => {
   $summaryCart.innerHTML = "";
   if (CART.length === 0) {
@@ -343,12 +367,14 @@ const renderCart = () => {
   }
   CART.forEach(renderCartItem);
 };
+
 const renderFinalPageInfo = () => {
   $finalPageHeader.innerText = `${SELECTEDCAR.brand} ${SELECTEDCAR.model}`;
   $finalPageImg.src = SELECTEDCAR.photo;
   $finalPagePaymentMehod.innerText = FORMFIELDS.payment;
   $finalPageTotalcost.innerText = FORMFIELDS.total;
 };
+
 const renderCartItem = (item) => {
   const cartItem = document.createElement("li");
   cartItem.innerHTML = `
@@ -373,6 +399,7 @@ const renderCartItem = (item) => {
 
   $summaryCart.appendChild(cartItem);
 };
+
 const renderPageNav = (list) => {
   $pageNavigation.innerHTML = "";
   for (let i = 0; i < list.length / itemsPerPage; i++) {
@@ -389,6 +416,7 @@ const renderPageNav = (list) => {
     $pageNavigation.append(span);
   }
 };
+
 const getCars = async () => {
   const resp = await fetch("./cars.json");
   const data = await resp.json();
@@ -415,10 +443,12 @@ $filterIcon.addEventListener("click", () => {
   $filtersContainer.classList.toggle("active");
   $filterIcon.classList.toggle("active");
 });
+
 $sortSelect.addEventListener("input", (e) => {
   SORT = e.target.value;
   renderCars();
 });
+
 window.addEventListener("load", async () => {
   await getCars();
   renderCars();
