@@ -227,7 +227,7 @@ const selectCar = (car) => {
 
 const renderCarDetails = (car) => {
   $selectedCarDetails.innerHTML = `
-  <img class="selectedcar__img" src="${car.photo}" />
+  <img class="selectedcar__img" src="${car.photo}" alt="${car.brand} ${car.model}"/>
   <div class='selectedcar__details'>
   <p class="selectedcar__brand">Marka: ${car.brand}</p>
   <p class="selectedcar__model">Model: ${car.model}</p>
@@ -241,7 +241,7 @@ const renderCarDetails = (car) => {
 const renderCar = (car) => {
   const carCard = document.createElement("div");
   carCard.classList.add("offer__car");
-  carCard.innerHTML = ` <img src=${car.photo} alt="" class="car__img" />
+  carCard.innerHTML = ` <img src=${car.photo} alt="${car.brand} ${car.model}" class="car__img" />
   <div class="car__description">
   <p class="car__brand">${car.brand}</p>
     <p class="car__model">${car.model}</h3>
@@ -369,6 +369,10 @@ const renderCart = () => {
 const renderFinalPageInfo = () => {
   $finalPageHeader.innerText = `${SELECTEDCAR.brand} ${SELECTEDCAR.model}`;
   $finalPageImg.src = SELECTEDCAR.photo;
+  $finalPageImg.setAttribute(
+    "alt",
+    `${SELECTEDCAR.brand} ${SELECTEDCAR.model}`
+  );
   $finalPagePaymentMehod.innerText = FORMFIELDS.payment;
   $finalPageTotalcost.innerText = FORMFIELDS.total;
 };
