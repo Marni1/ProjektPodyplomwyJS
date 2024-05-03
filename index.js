@@ -141,7 +141,6 @@ const handleCarPaymentOption = (e) => {
 
 const handleNameChange = (e) => {
   FORMFIELDS.name = e.target.value;
-  console.log(FORMFIELDS);
 };
 
 const changePages = () => {
@@ -331,7 +330,6 @@ const renderCars = () => {
     );
   });
   const sortedCars = filteredCarsBySearch.sort(sortOption(SORT));
-  console.log(sortedCars);
   if (sortedCars.length === 0) {
     renderNoOffersMessage();
     renderPageNav(filteredCarsBySearch);
