@@ -287,8 +287,10 @@ const sortOption = (sortValue) => {
 
     case "PRICEASC":
       return (a, b) => b.price - a.price;
+
     case "MILDESC":
       return (a, b) => b.mileage - a.mileage;
+
     case "MILASC":
       return (a, b) => a.mileage - b.mileage;
   }
