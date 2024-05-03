@@ -16,9 +16,11 @@ hr {
   border: none;
   background-color: var(--background-color);
 }
+
 a {
   cursor: pointer;
 }
+
 button {
   cursor: pointer;
 }
@@ -27,6 +29,7 @@ button {
   max-width: 1300px;
   margin: 0 auto;
 }
+
 .buypage.active,
 .homepage.active,
 .finalpage.active,
@@ -34,6 +37,7 @@ button {
 .nav__buyform.active {
   display: block;
 }
+
 .homepage,
 .buypage {
   margin-top: 5rem;
